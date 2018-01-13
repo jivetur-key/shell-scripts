@@ -1,5 +1,5 @@
 #!/bin/bash
-# simple script for updating packases from the aur
+# simple script for updating packages from the aur
 # assumes that there is a builds directory in the users home
 # requires git
 
