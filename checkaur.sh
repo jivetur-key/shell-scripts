@@ -1,9 +1,17 @@
 #!/bin/bash
-# check aur repo for updates
-# requires python web scraper script
 python aurscrp.py &
-sleep 15
-# creates two arrays one from a file the other using pacman to display all packages installed from the aur
+
+cnt=0
+while [ $cnt -eq 0 ]; do
+    if [ ! -f "paclist.txt" ]; then
+		clear && echo "connecting to the aur"
+		sleep 5
+	else
+		echo "complete"
+		cnt=1
+	fi
+done
+
 auray=( $(cat paclist.txt) )
 myray=( $(pacman -Qm | cut -d ' ' -f 1))
 declare -a update
@@ -21,3 +29,5 @@ do
 done
 printf "The following updates are available\n"
 echo ${update[@]}
+rm paclist.txt
+
